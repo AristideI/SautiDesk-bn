@@ -2,7 +2,7 @@
   "name": "sauti-desk-bn",
   "version": "0.1.0",
   "private": true,
-  "description": "A Strapi application",
+  "description": "SautiDesk is an intelligent customer support solution that leverages voice analytics and ticket classification to streamline communication in sectors like education, telecom, and public services. This backend manages content, user roles, authentication, ticket lifecycle, and more.",
   "scripts": {
     "build": "strapi build",
     "console": "strapi console",
@@ -18,10 +18,14 @@
   "dependencies": {
     "@strapi/plugin-cloud": "5.13.1",
     "@strapi/plugin-users-permissions": "5.13.1",
+    "@strapi/provider-upload-cloudinary": "^5.14.0",
     "@strapi/strapi": "5.13.1",
+    "@strapi/utils": "^5.14.0",
     "better-sqlite3": "11.3.0",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
+    "pg": "^8.16.0",
+    "pg-connection-string": "^2.9.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",

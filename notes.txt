@@ -1,0 +1,194 @@
+User
+Attributes:
+
+userId : UUID
+
+name : String
+
+email : String
+
+passwordHash : String
+
+role : Enum [NORMAL, AGENT, SUPER_ADMIN]
+
+organizationId : UUID (nullable for super admin)
+
+createdAt : DateTime
+
+Methods:
+
+authenticate()
+
+resetPassword()
+
+Organization
+Attributes:
+
+organizationId : UUID
+
+name : String
+
+address : String
+
+industry : String
+
+createdAt : DateTime
+
+Relationships:
+
+hasMany Users
+
+hasMany Tickets
+
+Agent
+(Extends User where role = AGENT)
+
+Attributes:
+
+expertiseTags : List<String>
+
+Relationships:
+
+assignedToMany Tickets
+
+SuperAdmin
+(Extends User where role = SUPER_ADMIN)
+
+Capabilities:
+
+manageAllOrganizations()
+
+manageUsers()
+
+viewSystemLogs()
+
+Ticket
+Attributes:
+
+ticketId : UUID
+
+title : String
+
+description : String
+
+status : Enum [OPEN, ASSIGNED, IN_PROGRESS, RESOLVED, CLOSED]
+
+priority : Enum [LOW, MEDIUM, HIGH]
+
+createdBy : UUID (User)
+
+assignedTo : UUID (Agent) — nullable
+
+organizationId : UUID
+
+createdAt : DateTime
+
+resolvedAt : DateTime (nullable)
+
+source : Enum [MANUAL, AI]
+
+Methods:
+
+assignToAgent()
+
+updateStatus()
+
+TicketComment
+Attributes:
+
+commentId : UUID
+
+ticketId : UUID
+
+authorId : UUID (User or Agent)
+
+content : Text
+
+createdAt : DateTime
+
+AIAssistant
+Attributes:
+
+aiSessionId : UUID
+
+query : Text
+
+inferredIntent : String
+
+generatedTicketId : UUID
+
+Methods:
+
+inferIntent()
+
+createTicket()
+
+TicketHistory
+Attributes:
+
+historyId : UUID
+
+ticketId : UUID
+
+statusFrom : Enum
+
+statusTo : Enum
+
+changedBy : UUID
+
+timestamp : DateTime
+
+ActivityLog
+Attributes:
+
+logId : UUID
+
+actorId : UUID
+
+action : String
+
+targetType : String (Ticket, User, Org, etc.)
+
+targetId : UUID
+
+timestamp : DateTime
+
+AuthSession
+Attributes:
+
+sessionId : UUID
+
+userId : UUID
+
+token : String
+
+createdAt : DateTime
+
+expiresAt : DateTime
+
+🔗 Key Relationships
+Organization ➝ has many ➝ Users
+
+User ➝ creates ➝ Tickets
+
+Agent ➝ assigned to ➝ Tickets
+
+Ticket ➝ has many ➝ TicketComment
+
+Ticket ➝ has many ➝ TicketHistory
+
+User ➝ logs ➝ ActivityLog
+
+AIAssistant ➝ creates ➝ Tickets
+
+✅ Supported Functionalities
+Functionality	Covered In Classes
+Authentication & Roles	User, AuthSession, SuperAdmin
+Ticket Creation	Ticket, User, AIAssistant
+Ticket Assignment	Ticket, Agent
+AI-generated Tickets	AIAssistant
+Ticket Progress Tracking	TicketHistory, Ticket
+Commenting on Tickets	TicketComment
+Multi-org User Management	Organization, SuperAdmin, User
+Audit Trails & Logs	ActivityLog
+

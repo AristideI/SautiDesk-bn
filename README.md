@@ -1,61 +1,124 @@
-# 🚀 Getting started with Strapi
+# 🚀 SautiDesk Backend
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Welcome to the **SautiDesk Backend**, a powerful AI-driven customer support platform designed for resource-constrained environments. This backend is built using [Strapi](https://strapi.io/) and supports PostgreSQL as the database and Cloudinary for media storage.
 
-### `develop`
+> 📍 Frontend repository: [SautiDesk Frontend](https://github.com/AristideI/SautiDesk-fn)
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+---
 
+## 📝 Project Description
+
+**SautiDesk** is an intelligent customer support solution that leverages voice analytics and ticket classification to streamline communication in sectors like education, telecom, and public services. This backend manages content, user roles, authentication, ticket lifecycle, and more.
+
+---
+
+## 📦 Tech Stack
+
+- **Backend Framework:** Strapi v5
+- **Database:** PostgreSQL
+- **Media Storage:** Cloudinary
+- **Language:** JavaScript (Node.js)
+- **Authentication:** Role-based via `@strapi/plugin-users-permissions`
+
+---
+
+## 📂 Getting Started
+
+### 📁 Clone the Repository
+
+```bash
+git clone https://github.com/AristideI/SautiDesk-bn.git
+cd SautiDesk-bn
 ```
+
+## ⚙️ Environment Configuration
+
+Create a .env file by copying the .env.example:
+
+```bash
+cp .env.example .env
+```
+
+### Update the .env with your credentials:
+
+- PostgreSQL connection
+- Cloudinary API keys
+- JWT secret
+- Admin panel URL
+
+## 📥 Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+## 🚧 Development
+
+Start the development server with hot reload:
+
+```bash
 npm run develop
 # or
 yarn develop
 ```
 
-### `start`
+## 🚀 Production
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+### 🛠 Build the Admin Panel
 
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
+```bash
 npm run build
 # or
 yarn build
 ```
 
-## ⚙️ Deployment
+## 🔥 Start the Production Server
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
+```bash
+npm run start
+# or
+yarn start
 ```
-yarn strapi deploy
+
+## 🚚 Deployment
+
+To deploy with supported platforms (Strapi Cloud, Heroku, Render, etc.):
+
+```bash
+npx strapi deploy
 ```
 
-## 📚 Learn more
+Refer to the Strapi deployment docs for advanced options.
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+## 🗃 Database
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+Ensure PostgreSQL is properly configured with the values from your .env. If deploying, provision a production PostgreSQL database.
 
-## ✨ Community
+## ☁️ Cloudinary Storage
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+Media uploads are handled through Cloudinary. Configure your Cloudinary keys in the .env:
 
----
+```env
+CLOUDINARY_NAME=
+CLOUDINARY_KEY=
+CLOUDINARY_SECRET=
+```
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+## 📜 Scripts
+
+```json
+"scripts": {
+  "build": "strapi build",
+  "console": "strapi console",
+  "deploy": "strapi deploy",
+  "dev": "strapi develop",
+  "develop": "strapi develop",
+  "seed:example": "node ./scripts/seed.js",
+  "start": "strapi start",
+  "strapi": "strapi",
+  "upgrade": "npx @strapi/upgrade latest",
+  "upgrade:dry": "npx @strapi/upgrade latest --dry"
+}
+```
