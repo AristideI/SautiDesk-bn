@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tickets",
+  "info": {
+    "singularName": "ticket",
+    "pluralName": "tickets",
+    "displayName": "Ticket",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "OPEN",
+        "ASSIGNED",
+        "IN_PROGRESS",
+        "RESOLVED",
+        "CLOSED"
+      ],
+      "default": "OPEN"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ],
+      "default": "MEDIUM"
+    },
+    "assignedTo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "tickets"
+    },
+    "ownedBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "organisation": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "customField",
+      "customField": "plugin::dynamic-enumeration.dynamic-field"
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": [
+        "MANUAL",
+        "AI"
+      ]
+    }
+  }
+}
