@@ -9,7 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -70,6 +70,39 @@
       "relation": "oneToMany",
       "target": "api::ticket.ticket",
       "mappedBy": "assignedTo"
+    },
+    "organisation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organisation.organisation",
+      "inversedBy": "agents"
+    },
+    "userRole": {
+      "type": "enumeration",
+      "enum": [
+        "SUPER_ADMIN",
+        "ADMIN",
+        "AGENT",
+        "CLIENT"
+      ],
+      "required": true,
+      "default": "ADMIN"
+    },
+    "changedPassword": {
+      "type": "boolean",
+      "default": false
+    },
+    "phone": {
+      "type": "string",
+      "maxLength": 12
+    },
+    "profile": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
