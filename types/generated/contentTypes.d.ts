@@ -525,6 +525,7 @@ export interface ApiOrganisationOrganisation
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    ownerId: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     tickets: Schema.Attribute.Relation<'oneToMany', 'api::ticket.ticket'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -559,7 +560,10 @@ export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
       'api::ticket.ticket'
     > &
       Schema.Attribute.Private;
-    organisation: Schema.Attribute.String;
+    organisation: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::organisation.organisation'
+    >;
     ownedBy: Schema.Attribute.Relation<
       'oneToOne',
       'plugin::users-permissions.user'

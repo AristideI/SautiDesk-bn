@@ -50,9 +50,6 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "organisation": {
-      "type": "string"
-    },
     "tags": {
       "type": "customField",
       "customField": "plugin::dynamic-enumeration.dynamic-field"
@@ -63,6 +60,12 @@
         "MANUAL",
         "AI"
       ]
+    },
+    "organisation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organisation.organisation",
+      "inversedBy": "tickets"
     }
   }
 }

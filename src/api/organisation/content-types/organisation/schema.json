@@ -18,11 +18,6 @@
     "description": {
       "type": "text"
     },
-    "tickets": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::ticket.ticket"
-    },
     "industry": {
       "type": "string"
     },
@@ -30,6 +25,15 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
+      "mappedBy": "organisation"
+    },
+    "ownerId": {
+      "type": "string"
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket",
       "mappedBy": "organisation"
     }
   }
