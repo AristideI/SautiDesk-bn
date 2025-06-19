@@ -633,6 +633,10 @@ export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
     tags: Schema.Attribute.String &
       Schema.Attribute.CustomField<'plugin::dynamic-enumeration.dynamic-field'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<
+      ['TICKET', 'INCIDENT', 'REQUEST', 'PROBLEM', 'SUGGESTION', 'OTHER']
+    > &
+      Schema.Attribute.DefaultTo<'TICKET'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

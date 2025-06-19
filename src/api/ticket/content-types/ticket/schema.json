@@ -66,6 +66,18 @@
       "relation": "manyToOne",
       "target": "api::organisation.organisation",
       "inversedBy": "tickets"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "TICKET",
+        "INCIDENT",
+        "REQUEST",
+        "PROBLEM",
+        "SUGGESTION",
+        "OTHER"
+      ],
+      "default": "TICKET"
     }
   }
 }
