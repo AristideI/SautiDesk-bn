@@ -1,6 +1,6 @@
 {
   "name": "sauti-desk-bn",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "description": "SautiDesk is an intelligent customer support solution that leverages voice analytics and ticket classification to streamline communication in sectors like education, telecom, and public services. This backend manages content, user roles, authentication, ticket lifecycle, and more.",
   "scripts": {
