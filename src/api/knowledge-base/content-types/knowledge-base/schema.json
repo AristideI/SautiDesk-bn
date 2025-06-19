@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "knowledge_bases",
+  "info": {
+    "singularName": "knowledge-base",
+    "pluralName": "knowledge-bases",
+    "displayName": "Knowledge-Base"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "author_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "conversation": {
+      "type": "text"
+    }
+  }
+}
