@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notes",
+  "info": {
+    "singularName": "note",
+    "pluralName": "notes",
+    "displayName": "Note",
+    "description": "Internal notes for tickets - visible only to agents and admins"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true,
+      "minLength": 1
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "required": true
+    },
+    "ticket": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ticket.ticket",
+      "inversedBy": "notes",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["INTERNAL", "PRIVATE", "SYSTEM"],
+      "default": "INTERNAL",
+      "description": "Type of note - INTERNAL (visible to all agents), PRIVATE (visible to author only), SYSTEM (auto-generated)"
+    },
+    "isImportant": {
+      "type": "boolean",
+      "default": false,
+      "description": "Mark note as important for quick reference"
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "files"]
+    }
+  }
+}

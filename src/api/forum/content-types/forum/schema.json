@@ -25,6 +25,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::conversation.conversation"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "forum"
     }
   }
 }

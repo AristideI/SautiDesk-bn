@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "Comment",
+    "description": "Comments for tickets, knowledge base articles, and other content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true,
+      "minLength": 1
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "required": true
+    },
+    "ticket": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ticket.ticket",
+      "inversedBy": "comments"
+    },
+    "knowledgeBase": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::knowledge-base.knowledge-base",
+      "inversedBy": "comments"
+    },
+    "forum": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::forum.forum",
+      "inversedBy": "comments"
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "files"]
+    }
+  }
+}
