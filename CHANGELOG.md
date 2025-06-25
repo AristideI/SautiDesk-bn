@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/AristideI/SautiDesk-bn/compare/v0.2.0...v0.3.0) (2025-06-25)
+
+
+### Features
+
+* set up resend and twillion for messaging ([b733c19](https://github.com/AristideI/SautiDesk-bn/commit/b733c19e92f4b9c77eb0a57aea03c396c9767e26))
+
 ## [0.2.0](https://github.com/AristideI/SautiDesk-bn/compare/v0.1.1...v0.2.0) (2025-06-19)
 
 
