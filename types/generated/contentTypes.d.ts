@@ -373,6 +373,52 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAgentAgent extends Struct.CollectionTypeSchema {
+  collectionName: 'agents';
+  info: {
+    description: 'Agent profiles with expertise and qualifications';
+    displayName: 'Agent';
+    pluralName: 'agents';
+    singularName: 'agent';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    about: Schema.Attribute.Text;
+    areaOfExpertise: Schema.Attribute.JSON & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    education: Schema.Attribute.JSON;
+    experience: Schema.Attribute.Integer;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    languages: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::agent.agent'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    qualification: Schema.Attribute.JSON;
+    rating: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+          min: 0;
+        },
+        number
+      >;
+    specializations: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   collectionName: 'comments';
   info: {
@@ -1232,6 +1278,7 @@ export interface PluginUsersPermissionsUser
     draftAndPublish: false;
   };
   attributes: {
+    agent: Schema.Attribute.Relation<'oneToOne', 'api::agent.agent'>;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     changedPassword: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
@@ -1300,6 +1347,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::agent.agent': ApiAgentAgent;
       'api::comment.comment': ApiCommentComment;
       'api::conversation.conversation': ApiConversationConversation;
       'api::forum.forum': ApiForumForum;

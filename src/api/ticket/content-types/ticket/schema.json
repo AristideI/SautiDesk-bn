@@ -21,12 +21,22 @@
     },
     "state": {
       "type": "enumeration",
-      "enum": ["OPEN", "ASSIGNED", "IN_PROGRESS", "RESOLVED", "CLOSED"],
+      "enum": [
+        "OPEN",
+        "ASSIGNED",
+        "IN_PROGRESS",
+        "RESOLVED",
+        "CLOSED"
+      ],
       "default": "OPEN"
     },
     "priority": {
       "type": "enumeration",
-      "enum": ["LOW", "MEDIUM", "HIGH"],
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ],
       "default": "MEDIUM"
     },
     "assignedTo": {
@@ -46,7 +56,10 @@
     },
     "source": {
       "type": "enumeration",
-      "enum": ["MANUAL", "AI"]
+      "enum": [
+        "MANUAL",
+        "AI"
+      ]
     },
     "organisation": {
       "type": "relation",
