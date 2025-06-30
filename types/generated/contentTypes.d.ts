@@ -571,6 +571,7 @@ export interface ApiKnowledgeBaseKnowledgeBase
 export interface ApiMessageMessage extends Struct.CollectionTypeSchema {
   collectionName: 'messages';
   info: {
+    description: '';
     displayName: 'Message';
     pluralName: 'messages';
     singularName: 'message';
@@ -599,7 +600,7 @@ export interface ApiMessageMessage extends Struct.CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    ticketId: Schema.Attribute.String;
+    tickets: Schema.Attribute.Relation<'oneToMany', 'api::ticket.ticket'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

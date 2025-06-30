@@ -4,7 +4,8 @@
   "info": {
     "singularName": "message",
     "pluralName": "messages",
-    "displayName": "Message"
+    "displayName": "Message",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,14 +25,18 @@
     "content": {
       "type": "text"
     },
-    "ticketId": {
-      "type": "string"
-    },
     "image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket"
     }
   }
 }
