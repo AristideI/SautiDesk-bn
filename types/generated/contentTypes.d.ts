@@ -386,7 +386,7 @@ export interface ApiAgentAgent extends Struct.CollectionTypeSchema {
   };
   attributes: {
     about: Schema.Attribute.Text;
-    areaOfExpertise: Schema.Attribute.JSON & Schema.Attribute.Required;
+    areaOfExpertise: Schema.Attribute.JSON;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

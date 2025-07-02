@@ -23,6 +23,7 @@ module.exports = ({ env }) => ({
           "userRole",
           "phone",
           "profile",
+          "agent",
           "organisation",
         ],
       },

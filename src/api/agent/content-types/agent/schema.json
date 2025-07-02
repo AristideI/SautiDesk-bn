@@ -19,7 +19,7 @@
     },
     "areaOfExpertise": {
       "type": "json",
-      "required": true,
+      "required": false,
       "description": "Primary area of expertise for the agent"
     },
     "about": {
