@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/AristideI/SautiDesk-bn/compare/v0.3.0...v0.4.0) (2025-07-04)
+
+
+### Features
+
+* activities ([99d9d80](https://github.com/AristideI/SautiDesk-bn/commit/99d9d80c06954b1c9fd2d725c3c822e828e13bb9))
+* knowledge base ([6b1b6e1](https://github.com/AristideI/SautiDesk-bn/commit/6b1b6e1c26f422670281d0bf562bee0103beb074))
+* messages ([213b16d](https://github.com/AristideI/SautiDesk-bn/commit/213b16d9f132e7c1fdf43347b6c2fec6f511282e))
+* update agent schema ([f964495](https://github.com/AristideI/SautiDesk-bn/commit/f9644959e4025312b1ddb4df0cb08ccc0cc51ebd))
+
 ## [0.3.0](https://github.com/AristideI/SautiDesk-bn/compare/v0.2.0...v0.3.0) (2025-06-25)
 
 
