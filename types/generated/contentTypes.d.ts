@@ -376,6 +376,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiActivityActivity extends Struct.CollectionTypeSchema {
   collectionName: 'activities';
   info: {
+    description: '';
     displayName: 'Activity';
     pluralName: 'activities';
     singularName: 'activity';
@@ -549,6 +550,10 @@ export interface ApiForumForum extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    activities: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::activity.activity'
+    >;
     author: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
@@ -586,6 +591,10 @@ export interface ApiKnowledgeBaseKnowledgeBase
     draftAndPublish: true;
   };
   attributes: {
+    activities: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::activity.activity'
+    >;
     author: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
@@ -602,6 +611,9 @@ export interface ApiKnowledgeBaseKnowledgeBase
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    state: Schema.Attribute.Enumeration<['public', 'private']> &
+      Schema.Attribute.DefaultTo<'public'>;
+    tags: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -779,6 +791,10 @@ export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    activities: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::activity.activity'
+    >;
     assignedTo: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
@@ -1323,6 +1339,10 @@ export interface PluginUsersPermissionsUser
     draftAndPublish: false;
   };
   attributes: {
+    activities: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::activity.activity'
+    >;
     agent: Schema.Attribute.Relation<'oneToOne', 'api::agent.agent'>;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     changedPassword: Schema.Attribute.Boolean &

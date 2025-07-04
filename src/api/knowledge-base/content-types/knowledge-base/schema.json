@@ -34,6 +34,14 @@
       "relation": "oneToMany",
       "target": "api::activity.activity",
       "mappedBy": "knowledgeBase"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": ["public", "private"],
+      "default": "public"
+    },
+    "tags": {
+      "type": "string"
     }
   }
 }
