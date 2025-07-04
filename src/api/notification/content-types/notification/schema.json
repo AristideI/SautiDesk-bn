@@ -10,20 +10,22 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "user_id": {
+    "from": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user"
     },
-    "type": {
-      "type": "enumeration",
-      "enum": ["message", "mention", "reply", "like", "follow"]
+    "agent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
     },
     "content": {
       "type": "text"
     },
-    "read_at": {
-      "type": "datetime"
+    "type": {
+      "type": "enumeration",
+      "enum": ["message", "mention", "reply", "like", "follow"]
     }
   }
 }

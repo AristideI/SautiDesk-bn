@@ -90,6 +90,12 @@
       "relation": "oneToMany",
       "target": "api::note.note",
       "mappedBy": "ticket"
+    },
+    "activities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::activity.activity",
+      "mappedBy": "ticket"
     }
   }
 }

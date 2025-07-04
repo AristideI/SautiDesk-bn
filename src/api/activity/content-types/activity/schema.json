@@ -1,52 +1,53 @@
 {
   "kind": "collectionType",
-  "collectionName": "comments",
+  "collectionName": "activities",
   "info": {
-    "singularName": "comment",
-    "pluralName": "comments",
-    "displayName": "Comment",
-    "description": "Comments for tickets, knowledge base articles, and other content"
+    "singularName": "activity",
+    "pluralName": "activities",
+    "displayName": "Activity",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "content": {
-      "type": "text",
-      "required": true,
-      "minLength": 1
-    },
-    "author": {
+    "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "required": true
+      "inversedBy": "activities"
     },
     "ticket": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::ticket.ticket",
-      "inversedBy": "comments"
+      "inversedBy": "activities"
     },
     "knowledgeBase": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::knowledge-base.knowledge-base",
-      "inversedBy": "comments"
+      "inversedBy": "activities"
     },
     "forum": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::forum.forum",
-      "inversedBy": "comments"
+      "inversedBy": "activities"
     },
-    "attachments": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files"
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "ticket",
+        "knowledgeBase",
+        "forum",
+        "comment",
+        "reply",
+        "mention"
       ]
+    },
+    "content": {
+      "type": "text"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "knowledge-base",
     "pluralName": "knowledge-bases",
-    "displayName": "Knowledge-Base"
+    "displayName": "Knowledge-Base",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,18 +17,22 @@
     "content": {
       "type": "richtext"
     },
-    "author_id": {
+    "author": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user"
-    },
-    "conversation": {
-      "type": "text"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "knowledgeBase"
     },
     "comments": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comment.comment",
+      "mappedBy": "knowledgeBase"
+    },
+    "activities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::activity.activity",
       "mappedBy": "knowledgeBase"
     }
   }

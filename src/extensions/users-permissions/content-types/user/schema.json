@@ -109,6 +109,18 @@
       "relation": "oneToOne",
       "target": "api::agent.agent",
       "mappedBy": "user"
+    },
+    "knowledgeBase": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::knowledge-base.knowledge-base",
+      "mappedBy": "author"
+    },
+    "activities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::activity.activity",
+      "mappedBy": "user"
     }
   }
 }

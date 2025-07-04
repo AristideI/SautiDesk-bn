@@ -373,6 +373,47 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiActivityActivity extends Struct.CollectionTypeSchema {
+  collectionName: 'activities';
+  info: {
+    displayName: 'Activity';
+    pluralName: 'activities';
+    singularName: 'activity';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    forum: Schema.Attribute.Relation<'manyToOne', 'api::forum.forum'>;
+    knowledgeBase: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::knowledge-base.knowledge-base'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::activity.activity'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    ticket: Schema.Attribute.Relation<'manyToOne', 'api::ticket.ticket'>;
+    type: Schema.Attribute.Enumeration<
+      ['ticket', 'knowledgeBase', 'forum', 'comment', 'reply', 'mention']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiAgentAgent extends Struct.CollectionTypeSchema {
   collectionName: 'agents';
   info: {
@@ -536,6 +577,7 @@ export interface ApiKnowledgeBaseKnowledgeBase
   extends Struct.CollectionTypeSchema {
   collectionName: 'knowledge_bases';
   info: {
+    description: '';
     displayName: 'Knowledge-Base';
     pluralName: 'knowledge-bases';
     singularName: 'knowledge-base';
@@ -544,13 +586,12 @@ export interface ApiKnowledgeBaseKnowledgeBase
     draftAndPublish: true;
   };
   attributes: {
-    author_id: Schema.Attribute.Relation<
+    author: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
     comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     content: Schema.Attribute.RichText;
-    conversation: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -660,10 +701,18 @@ export interface ApiNotificationNotification
     draftAndPublish: true;
   };
   attributes: {
+    agent: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     content: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    from: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -671,17 +720,12 @@ export interface ApiNotificationNotification
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    read_at: Schema.Attribute.DateTime;
     type: Schema.Attribute.Enumeration<
       ['message', 'mention', 'reply', 'like', 'follow']
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user_id: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
   };
 }
 
@@ -1293,6 +1337,10 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    knowledgeBase: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::knowledge-base.knowledge-base'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1348,6 +1396,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::activity.activity': ApiActivityActivity;
       'api::agent.agent': ApiAgentAgent;
       'api::comment.comment': ApiCommentComment;
       'api::conversation.conversation': ApiConversationConversation;
