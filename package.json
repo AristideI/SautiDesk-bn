@@ -19,6 +19,7 @@
     "release:patch": "standard-version --release-as patch"
   },
   "dependencies": {
+    "@datastax/astra-db-ts": "^2.0.1",
     "@strapi/plugin-cloud": "5.13.1",
     "@strapi/plugin-users-permissions": "5.13.1",
     "@strapi/provider-upload-cloudinary": "^5.14.0",

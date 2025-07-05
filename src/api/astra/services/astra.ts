@@ -1,0 +1,5 @@
+/**
+ * astra service
+ */
+
+export default () => ({});
