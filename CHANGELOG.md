@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/AristideI/SautiDesk-bn/compare/v0.4.0...v0.4.1) (2025-07-06)
+
+
+### Features
+
+* astra connections ([2450b27](https://github.com/AristideI/SautiDesk-bn/commit/2450b2761e1b7a0805ac89fef34f2e9c6e2d05d6))
+* handle OTP ([92a86bb](https://github.com/AristideI/SautiDesk-bn/commit/92a86bb3d26ac6929f1cce1ce5d8944d2ace556a))
+
 ## [0.4.0](https://github.com/AristideI/SautiDesk-bn/compare/v0.3.0...v0.4.0) (2025-07-04)
 
 
