@@ -691,8 +691,7 @@ export interface ApiNoteNote extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::note.note'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    ticket: Schema.Attribute.Relation<'manyToOne', 'api::ticket.ticket'> &
-      Schema.Attribute.Required;
+    ticket: Schema.Attribute.Relation<'manyToOne', 'api::ticket.ticket'>;
     type: Schema.Attribute.Enumeration<['INTERNAL', 'PRIVATE', 'SYSTEM']> &
       Schema.Attribute.DefaultTo<'INTERNAL'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -779,6 +778,31 @@ export interface ApiOrganisationOrganisation
   };
 }
 
+export interface ApiOtpOtp extends Struct.CollectionTypeSchema {
+  collectionName: 'otps';
+  info: {
+    displayName: 'OTP';
+    pluralName: 'otps';
+    singularName: 'otp';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::otp.otp'> &
+      Schema.Attribute.Private;
+    otp: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
   collectionName: 'tickets';
   info: {
@@ -822,6 +846,10 @@ export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
     priority: Schema.Attribute.Enumeration<['LOW', 'MEDIUM', 'HIGH']> &
       Schema.Attribute.DefaultTo<'MEDIUM'>;
     publishedAt: Schema.Attribute.DateTime;
+    similarTickets: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ticket.ticket'
+    >;
     source: Schema.Attribute.Enumeration<['MANUAL', 'AI']>;
     state: Schema.Attribute.Enumeration<
       ['OPEN', 'ASSIGNED', 'IN_PROGRESS', 'RESOLVED', 'CLOSED']
@@ -831,7 +859,15 @@ export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
       Schema.Attribute.CustomField<'plugin::dynamic-enumeration.dynamic-field'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     type: Schema.Attribute.Enumeration<
-      ['TICKET', 'INCIDENT', 'REQUEST', 'PROBLEM', 'SUGGESTION', 'OTHER']
+      [
+        'TICKET',
+        'INCIDENT',
+        'QUESTION',
+        'REQUEST',
+        'PROBLEM',
+        'SUGGESTION',
+        'OTHER',
+      ]
     > &
       Schema.Attribute.DefaultTo<'TICKET'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -1426,6 +1462,7 @@ declare module '@strapi/strapi' {
       'api::note.note': ApiNoteNote;
       'api::notification.notification': ApiNotificationNotification;
       'api::organisation.organisation': ApiOrganisationOrganisation;
+      'api::otp.otp': ApiOtpOtp;
       'api::ticket.ticket': ApiTicketTicket;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

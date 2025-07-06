@@ -26,12 +26,15 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::ticket.ticket",
-      "inversedBy": "notes",
-      "required": true
+      "inversedBy": "notes"
     },
     "type": {
       "type": "enumeration",
-      "enum": ["INTERNAL", "PRIVATE", "SYSTEM"],
+      "enum": [
+        "INTERNAL",
+        "PRIVATE",
+        "SYSTEM"
+      ],
       "default": "INTERNAL",
       "description": "Type of note - INTERNAL (visible to all agents), PRIVATE (visible to author only), SYSTEM (auto-generated)"
     },
@@ -43,7 +46,10 @@
     "attachments": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": ["images", "files"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

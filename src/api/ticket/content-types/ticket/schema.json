@@ -72,6 +72,7 @@
       "enum": [
         "TICKET",
         "INCIDENT",
+        "QUESTION",
         "REQUEST",
         "PROBLEM",
         "SUGGESTION",
@@ -96,6 +97,11 @@
       "relation": "oneToMany",
       "target": "api::activity.activity",
       "mappedBy": "ticket"
+    },
+    "similarTickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket"
     }
   }
 }
