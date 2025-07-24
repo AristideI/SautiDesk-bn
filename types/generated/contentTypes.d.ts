@@ -389,7 +389,6 @@ export interface ApiActivityActivity extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    forum: Schema.Attribute.Relation<'manyToOne', 'api::forum.forum'>;
     knowledgeBase: Schema.Attribute.Relation<
       'manyToOne',
       'api::knowledge-base.knowledge-base'
@@ -550,10 +549,6 @@ export interface ApiForumForum extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    activities: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::activity.activity'
-    >;
     author: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'

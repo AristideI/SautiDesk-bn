@@ -29,12 +29,6 @@
       "target": "api::knowledge-base.knowledge-base",
       "inversedBy": "activities"
     },
-    "forum": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::forum.forum",
-      "inversedBy": "activities"
-    },
     "type": {
       "type": "enumeration",
       "enum": [

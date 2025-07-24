@@ -31,12 +31,6 @@
       "relation": "oneToMany",
       "target": "api::comment.comment",
       "mappedBy": "forum"
-    },
-    "activities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::activity.activity",
-      "mappedBy": "forum"
     }
   }
 }
