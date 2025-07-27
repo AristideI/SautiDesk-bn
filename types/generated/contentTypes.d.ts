@@ -671,8 +671,7 @@ export interface ApiNoteNote extends Struct.CollectionTypeSchema {
     author: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
-    > &
-      Schema.Attribute.Required;
+    >;
     content: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -1398,6 +1397,7 @@ export interface PluginUsersPermissionsUser
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    notes: Schema.Attribute.Relation<'oneToMany', 'api::note.note'>;
     organisation: Schema.Attribute.Relation<
       'manyToOne',
       'api::organisation.organisation'

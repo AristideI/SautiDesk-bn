@@ -20,7 +20,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "required": true
+      "inversedBy": "notes"
     },
     "ticket": {
       "type": "relation",
@@ -46,6 +46,7 @@
     "attachments": {
       "type": "media",
       "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files"
