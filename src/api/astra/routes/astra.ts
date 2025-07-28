@@ -3,7 +3,7 @@ export default {
     {
       method: "GET",
       path: "/astra",
-      handler: "astra.exampleAction",
+      handler: "astra.getTickets",
       config: {
         auth: false,
         policies: [],

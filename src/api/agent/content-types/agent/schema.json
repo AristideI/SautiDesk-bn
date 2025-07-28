@@ -54,7 +54,7 @@
       "description": "Years of experience in the field"
     },
     "rating": {
-      "type": "integer",
+      "type": "decimal",
       "min": 0,
       "max": 5,
       "description": "Average rating from client feedback"

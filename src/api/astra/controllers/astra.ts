@@ -16,13 +16,9 @@ const ticketsCollection = astraDb.collection("tickets");
 const agentsCollection = astraDb.collection("agents");
 
 export default {
-  exampleAction: async (ctx, next) => {
-    try {
-      const collections = await astraDb.listCollections();
-      ctx.body = collections;
-    } catch (err) {
-      ctx.body = err;
-    }
+  async getTickets(ctx, next) {
+    const tickets = await ticketsCollection.find({});
+    ctx.body = tickets;
   },
 
   async createTicket(ctx, next) {

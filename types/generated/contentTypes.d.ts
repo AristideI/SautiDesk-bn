@@ -440,7 +440,7 @@ export interface ApiAgentAgent extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     qualification: Schema.Attribute.JSON;
-    rating: Schema.Attribute.Integer &
+    rating: Schema.Attribute.Decimal &
       Schema.Attribute.SetMinMax<
         {
           max: 5;
